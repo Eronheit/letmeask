@@ -34,7 +34,12 @@ type QuestionType = {
   likeId: string | undefined;
 };
 
-export function useRoom(roomId: string) {
+type useRoomResult = {
+  questions: QuestionType[];
+  title: string | undefined;
+};
+
+export const useRoom = (roomId: string): useRoomResult => {
   const { user } = useAuth();
   const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [title, setTitle] = useState();
@@ -56,7 +61,7 @@ export function useRoom(roomId: string) {
             isAnswered: value.isAnswered,
             likeCount: Object.values(value.likes ?? {}).length,
             likeId: Object.entries(value.likes ?? {}).find(
-              ([key, like]) => like.authorId === user?.id,
+              ([, like]) => like.authorId === user?.id,
             )?.[0],
           };
         },
@@ -72,4 +77,4 @@ export function useRoom(roomId: string) {
   }, [roomId, user?.id]);
 
   return { questions, title };
-}
+};

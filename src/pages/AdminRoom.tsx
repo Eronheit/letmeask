@@ -1,3 +1,4 @@
+import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import logoImg from '../assets/images/logo.svg';
@@ -17,7 +18,7 @@ type RoomParams = {
   id: string;
 };
 
-export function AdminRoom() {
+export const AdminRoom: React.FC = () => {
   // const { user } = useAuth()
   const history = useHistory();
   const params = useParams<RoomParams>();
@@ -113,4 +114,4 @@ export function AdminRoom() {
       </main>
     </div>
   );
-}
+};

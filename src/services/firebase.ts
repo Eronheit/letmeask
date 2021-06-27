@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 
+/* eslint-disable import/no-duplicates */
 import 'firebase/auth';
+import 'firebase/database';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,

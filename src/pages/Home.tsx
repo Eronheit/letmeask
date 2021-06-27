@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { useAuth } from '../hooks/useAuth';
@@ -12,7 +12,7 @@ import { database } from '../services/firebase';
 
 import '../styles/auth.scss';
 
-export function Home() {
+export const Home: React.FC = () => {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
   const [roomCode, setRoomCode] = useState('');
@@ -61,7 +61,11 @@ export function Home() {
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
-          <button onClick={handleCreateRoom} className="create-room">
+          <button
+            type="button"
+            onClick={handleCreateRoom}
+            className="create-room"
+          >
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
           </button>
@@ -81,4 +85,4 @@ export function Home() {
       </main>
     </div>
   );
-}
+};
